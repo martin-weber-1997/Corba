@@ -12,18 +12,18 @@ LD_LIBRARY_PATH = ${OMNI_HOME}/lib
 all server: $(OBJECTS)
 	$(CXX) $(LDFLAGS) -o cb_server cb_server.o echo_callbackSK.o $(LIBS)
 
-server.o: cb_server.cc
+cb_server.o: cb_server.cc
 	$(CXX) $(CPPFLAGS) cb_server.cc -I.
 
 echo_callbackSK.o: echo_callbackSK.cc echo_callback.hh
 	$(CXX) $(CPPFLAGS) echo_callbackSK.cc -I.
 
-echoSK.cc: $(IDL_FILE)
+echo_callbackSK.cc: $(IDL_FILE)
 	$(OMNIIDL) -bcxx $(IDL_FILE)
 
-run: server
+run: cb_server
 	# Start Naming service with command 'omniNames -start -always' as root
-	./server -ORBInitRef NameService=corbaname::localhost
+	./cb_server -ORBInitRef NameService=corbaname::localhost
 
 clean clean-up:
 	rm -rf *.o

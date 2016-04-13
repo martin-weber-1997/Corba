@@ -91,7 +91,7 @@ int main(int argc, char** argv)
 
     }
     // Clean-up.  This also destroys the call-back object.
-    orb->destroy();
+    	orb->destroy();
   }
   catch (CORBA::TRANSIENT&) {
     cerr << "Caught system exception TRANSIENT -- unable to contact the "

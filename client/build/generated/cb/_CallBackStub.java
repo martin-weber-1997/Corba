@@ -1,27 +1,27 @@
-package helloworld;
+package cb;
 
 
 /**
- * Generated from IDL interface "Echo".
+ * Generated from IDL interface "CallBack".
  *
  * @author JacORB IDL compiler V 3.7
- * @version generated at Apr 8, 2016 3:52:19 PM
+ * @version generated at Apr 13, 2016 7:30:06 PM
  */
 
-public class _EchoStub
+public class _CallBackStub
 	extends org.omg.CORBA.portable.ObjectImpl
-	implements helloworld.Echo
+	implements cb.CallBack
 {
 	/** Serial version UID. */
 	private static final long serialVersionUID = 1L;
-	private String[] ids = {"IDL:helloworld/Echo:1.0"};
+	private String[] ids = {"IDL:cb/CallBack:1.0"};
 	public String[] _ids()
 	{
 		return ids;
 	}
 
-	public final static java.lang.Class _opsClass = helloworld.EchoOperations.class;
-	public java.lang.String echoString(java.lang.String mesg)
+	public final static java.lang.Class _opsClass = cb.CallBackOperations.class;
+	public void call_back(java.lang.String mesg)
 	{
 		while(true)
 		{
@@ -31,12 +31,11 @@ public class _EchoStub
 				org.omg.CORBA.portable.OutputStream _os = null;
 				try
 				{
-					_os = _request( "echoString", true);
+					_os = _request( "call_back", true);
 					java.lang.String tmpResult0 = mesg;
 _os.write_string( tmpResult0 );
 					_is = _invoke(_os);
-					java.lang.String _result = _is.read_string();
-					return _result;
+					return;
 				}
 				catch( org.omg.CORBA.portable.RemarshalException _rx )
 					{
@@ -73,17 +72,16 @@ _os.write_string( tmpResult0 );
 		}
 		else
 		{
-			org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke( "echoString", _opsClass );
+			org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke( "call_back", _opsClass );
 			if( _so == null )
 				continue;
-			EchoOperations _localServant = (EchoOperations)_so.servant;
-			java.lang.String _result;
+			CallBackOperations _localServant = (CallBackOperations)_so.servant;
 			try
 			{
-				_result = _localServant.echoString(mesg);
+				_localServant.call_back(mesg);
 				if ( _so instanceof org.omg.CORBA.portable.ServantObjectExt) 
 					((org.omg.CORBA.portable.ServantObjectExt)_so).normalCompletion();
-				return _result;
+				return;
 			}
 			catch (RuntimeException re) 
 			{

@@ -1,33 +1,33 @@
-package helloworld;
+package cb;
 
 
 /**
- * Generated from IDL interface "Echo".
+ * Generated from IDL interface "CallBack".
  *
  * @author JacORB IDL compiler V 3.7
- * @version generated at Apr 8, 2016 3:52:19 PM
+ * @version generated at Apr 13, 2016 7:30:06 PM
  */
 
-public abstract class EchoPOA
+public abstract class CallBackPOA
 	extends org.omg.PortableServer.Servant
-	implements org.omg.CORBA.portable.InvokeHandler, helloworld.EchoOperations
+	implements org.omg.CORBA.portable.InvokeHandler, cb.CallBackOperations
 {
 	static private final java.util.HashMap<String,Integer> m_opsHash = new java.util.HashMap<String,Integer>();
 	static
 	{
-		m_opsHash.put ( "echoString", Integer.valueOf(0));
+		m_opsHash.put ( "call_back", Integer.valueOf(0));
 	}
-	private String[] ids = {"IDL:helloworld/Echo:1.0"};
-	public helloworld.Echo _this()
+	private String[] ids = {"IDL:cb/CallBack:1.0"};
+	public cb.CallBack _this()
 	{
 		org.omg.CORBA.Object __o = _this_object() ;
-		helloworld.Echo __r = helloworld.EchoHelper.narrow(__o);
+		cb.CallBack __r = cb.CallBackHelper.narrow(__o);
 		return __r;
 	}
-	public helloworld.Echo _this(org.omg.CORBA.ORB orb)
+	public cb.CallBack _this(org.omg.CORBA.ORB orb)
 	{
 		org.omg.CORBA.Object __o = _this_object(orb) ;
-		helloworld.Echo __r = helloworld.EchoHelper.narrow(__o);
+		cb.CallBack __r = cb.CallBackHelper.narrow(__o);
 		return __r;
 	}
 	public org.omg.CORBA.portable.OutputStream _invoke(String method, org.omg.CORBA.portable.InputStream _input, org.omg.CORBA.portable.ResponseHandler handler)
@@ -41,12 +41,11 @@ public abstract class EchoPOA
 			throw new org.omg.CORBA.BAD_OPERATION(method + " not found");
 		switch ( opsIndex.intValue() )
 		{
-			case 0: // echoString
+			case 0: // call_back
 			{
 				java.lang.String _arg0=_input.read_string();
 				_out = handler.createReply();
-				java.lang.String tmpResult1 = echoString(_arg0);
-_out.write_string( tmpResult1 );
+				call_back(_arg0);
 				break;
 			}
 		}
