@@ -40,9 +40,9 @@ public class Client {
 			CallBack callback = CallBackHelper.narrow(rootpoa.servant_to_reference(new PrintCallback()));//Returns IOR
 			s.one_time(callback,"one_time: The Server says 'hello'");//one Time Callback
 			s.register(callback,"register: hello",(short)1);//Callback until Client fails
-			System.out.println("Client: running; waiting for callback execution; press [Enter] to terminate");
+			System.out.println("Client: Press Enter to terminate");
 			while(System.in.read() != '\n');
-			System.out.println("Client: terminated");
+			System.out.println("Client terminated");
 
 		}	catch (Exception e)	{
 			System.err.println("Es ist ein Fehler aufgetreten: " + e.getMessage());
