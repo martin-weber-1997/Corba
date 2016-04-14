@@ -35,11 +35,11 @@ public class Client {
 			/* Aufloesen der Objektreferenzen  */
 			s = ServerHelper.narrow(rootContext.resolve(name));
 
-			POA root_poa = (POA) orb.resolve_initial_references ("RootPOA");
-			root_poa.the_POAManager().activate();
-			CallBack callback = CallBackHelper.narrow(root_poa.servant_to_reference(new PrintCallback()));
-			s.one_time(callback,"one_time: The Server says 'hello'");
-			s.register(callback,"register: hello",(short)1);
+			POA rootpoa = (POA) orb.resolve_initial_references ("RootPOA");//getting the RootPOA
+			rootpoa.the_POAManager().activate();//activating POAManager so the Client can recieve requests
+			CallBack callback = CallBackHelper.narrow(rootpoa.servant_to_reference(new PrintCallback()));//Returns IOR
+			s.one_time(callback,"one_time: The Server says 'hello'");//one Time Callback
+			s.register(callback,"register: hello",(short)1);//Callback until Client fails
 			System.out.println("Client: running; waiting for callback execution; press [Enter] to terminate");
 			while(System.in.read() != '\n');
 			System.out.println("Client: terminated");
